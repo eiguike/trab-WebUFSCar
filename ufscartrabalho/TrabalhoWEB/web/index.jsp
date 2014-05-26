@@ -26,7 +26,7 @@ que jogam por esse país e esporte
 				<p id="logotexto">WebSports©</p>
 				<div id="menu">
 					<nav id="opcoes">
-						<a href="#" id="bconsulta0">Pag. Principal</a>
+						<a href="#" id="bconsulta0">Home</a>
 						<a href="#" id="bconsulta1">Buscar por Jogadores</a>
 						<a href="#" id="bconsulta2">Buscar por País</a>
 						<a href="#" id="bconsulta3">Buscar por Jogadores e Esporte</a>
