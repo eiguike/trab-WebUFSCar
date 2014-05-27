@@ -117,7 +117,7 @@
             font-size: 20px;
             color: black;
             font-family: 'Open Sans', sans-serif;
-            
+		z-index:1001;  
             width: auto;
             height: auto;
             position: absolute;
@@ -133,9 +133,18 @@
         }
         #texto{    
                 color:black;
-
         }
-
+	.blanket{	
+		margin: 0;
+		padding: 0;
+		position: fixed;	
+		background-color:rgba(0,0,0,0.6);
+		height: 100%;
+		width: 100%;
+		top: 0px;
+		left:0px;
+		z-index:1000;	
+	}	
         button[type="button"]{  
             padding:0.5em 1em; 
             line-height:1em; 

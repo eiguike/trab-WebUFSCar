@@ -21,6 +21,7 @@ que jogam por esse país e esporte
             <script src="http://code.jquery.com/jquery-latest.js"></script>
 	</head>
 	<body>
+		<div class = "blanket"></div>
 		<div id = "fundo">
 			<div id = "logo">
 				<p id="logotexto">WebSports©</p>
@@ -68,11 +69,11 @@ que jogam por esse país e esporte
 				<p>Trabalho de Web - UFSCar Sorocaba - melhor visualizado com Firefox e em resolução 1920x1080</p>
 			</div>			
 		</div>
-            
 
             <script>
                     $(document).ready(function(){
-                        $("#texto").show();
+               		$(".blanket").hide();
+			$("#texto").show();
                             $("#consulta1").hide();			
                             $("#consulta2").hide();
                             $("#consulta3").hide();
@@ -86,6 +87,7 @@ que jogam por esse país e esporte
                                     $(".formulario").hide();                              
                                 });
                           $("#bconsulta1").click(function(){
+				$(".blanket").show();
                             $("#consulta1").show();
                             $(".formulario").show();
                             $("#fConsulta1").show();
@@ -117,7 +119,8 @@ que jogam por esse país e esporte
                     function consulta1(){
                           alert('implicando que eu tenha feito sua consulta'); 
                           $(".formulario").hide();
-                    }
+			$(".blanket").hide();
+                    }	
             </script>
 
 
