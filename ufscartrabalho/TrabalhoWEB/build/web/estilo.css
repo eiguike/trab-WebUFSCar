@@ -41,7 +41,7 @@
 		padding-left: 2%;
 		padding-right: 2%;
 		margin: auto;
-		font-size: 0.5em;
+		font-size: 25px;
 	}
 
 	#foot{
@@ -81,7 +81,7 @@
 	}
 	#main{
 		padding-bottom:150px;
-                background-color:black;
+                background-color: rgba(0, 0, 0, 0.6);
 		margin-top: 20px;
 		margin-left: 20px;
 		margin-right: 20px;
@@ -109,11 +109,9 @@
                 border-radius: 10px;    
 		height: 300px;
 		overflow-y: scroll;
-                background-color: #000000;
 	}
 
         #texto{    
                 color:black;
-                background-color:black;
 
         }
