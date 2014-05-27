@@ -76,7 +76,9 @@
 	a:active {color:#0000FF; text-decoration:none;}  /* selected link */ 
 
 
-	p, a{
+	span,p, a{
+                font-size: 20px;
+                color: #ffffff;
 		font-family: 'Open Sans', sans-serif;
 	}
 	#main{
