@@ -37,7 +37,7 @@ que jogam por esse país e esporte
                         <div class="formulario">
                             <form id="fConsulta1">
                                 <span>Nome do Jogador: <input type="text" name="nomejogador"></span>
-                                <p><button type="button" onclick="alert('hehehe')">Consultar</button></p>
+                                <p><button type="button" onclick="consulta1();">Consultar</button></p>
                             </form>
                         </div>                    
                     
@@ -111,8 +111,13 @@ que jogam por esse país e esporte
                             $("#consulta1").hide();
                             $("#texto").hide();
                           });
+                          
 
-                    });			
+                    });		
+                    function consulta1(){
+                          alert('implicando que eu tenha feito sua consulta'); 
+                          $(".formulario").hide();
+                    }
             </script>
 
 
