@@ -40,6 +40,19 @@ que jogam por esse país e esporte
                                 <span>Nome do Jogador: <input type="text" name="nomejogador"></span>
                                 <p><button type="button" onclick="consulta1();">Consultar</button></p>
                             </form>
+            	            <form id="fConsulta2">
+            					<span>
+            						País: <select name="pais">
+            							<option value="brasil">Brasil</option>
+								</select>
+            					</span>
+            					<p><button type="button" onclick="consulta1();">Buscar</button></p>
+            	            </form>
+			    <form id="fConsulta3">
+				<span>Nome do Jogador: <input type="text" name="nomejogador"></span>
+				<br><span>Esporte: <input type="text" name"esporte"></span>
+				<p><button type="button" onclick="consulta1();">Consultar</button></p>
+			    </form>
                         </div>                    
                     
 			<div id = "main">
@@ -87,10 +100,12 @@ que jogam por esse país e esporte
                                     $(".formulario").hide();                              
                                 });
                           $("#bconsulta1").click(function(){
-				$(".blanket").show();
                             $("#consulta1").show();
+			    $(".blanket").show();	
                             $(".formulario").show();
                             $("#fConsulta1").show();
+			    $("#fConsulta2").hide();
+			    $("#fConsulta3").hide();
                             $("#consulta2").hide();
                             $("#consulta3").hide();
                             $("#texto").hide();
@@ -98,8 +113,11 @@ que jogam por esse país e esporte
 
                           $("#bconsulta2").click(function(){
                             $("#consulta2").show();
-                            $(".formulario").show();
-                            $("#fConsulta1").hide();                            
+			    $(".blanket").show();
+			    $(".formulario").show();
+                            $("#fConsulta1").hide();
+			    $("#fConsulta2").show();
+			    $("#fConsulta3").hide();                            
                             $("#consulta1").hide();
                             $("#consulta3").hide();
                             $("#texto").hide();
@@ -107,10 +125,13 @@ que jogam por esse país e esporte
 
                           $("#bconsulta3").click(function(){
                             $("#consulta3").show();
+			    $(".blanket").show();
                             $(".formulario").show();
-                            $("#fConsulta1").hide();                               
-                            $("#consulta2").hide();
+                            $("#fConsulta1").hide();
+			    $("#fConsulta2").hide();
+			    $("#fConsulta3").show();
                             $("#consulta1").hide();
+			    $("#consulta2").hide();
                             $("#texto").hide();
                           });
                           
@@ -120,7 +141,7 @@ que jogam por esse país e esporte
                           alert('implicando que eu tenha feito sua consulta'); 
                           $(".formulario").hide();
 			$(".blanket").hide();
-                    }	
+                    }
             </script>
 
 
