@@ -110,33 +110,27 @@
 		margin-right: 20px;	
 		margin-bottom: 20px;	
                 border-radius: 10px;    
-		height: 300px;
+		height: 400px;
 		overflow-y: scroll;
 	}
         .formulario{
             font-size: 20px;
             color: black;
             font-family: 'Open Sans', sans-serif;
-		z-index:1001;  
+         		z-index:1001;  
             width: auto;
             height: auto;
             position: absolute;
             background-color: white;
-            padding: 2%;
             margin-left: 36%;
             margin-right: 25%;
-            border-radius: 10px;                
+            border-radius: 10px;
         }
-        
-        #fConsulta1{
+
+        .fconsulta{
+            padding: 6%;
             text-align: center;
         }
-	#fConsulta2{
-		text-align: center;
-	}
-	#fConsulta3{
-		text-align: center;
-	}
         #texto{    
                 color:black;
         }
@@ -162,4 +156,10 @@
             border:solid 1px #ccc;	
             box-shadow:0 1px 5px rgba(0,0,0,0.2); 
             background-position: center bottom;
-        } 
+        }
+  #btn_x a{
+    text-align: right;
+    margin-right: 3%;
+    margin-top: 2%;
+    color: rgba(0,0,0,0.2);
+  }
