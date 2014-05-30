@@ -37,7 +37,7 @@ que jogam por esse país e esporte
 
             <div class="formulario">
               <div id="btn_x">
-                <a onclick="fecharBtn();"> <span>X</span></a>
+                <a onclick="fecharBtn();">X</a>
               </div>
               <form id="fConsulta1" class="fconsulta">
                 <span>Nome do Jogador: <input type="text" name="nomejogador"></span>
