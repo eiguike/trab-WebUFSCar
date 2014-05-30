@@ -145,7 +145,7 @@
 		left:0px;
 		z-index:1000;	
 	}	
-        button[type="button"]{  
+        button[type="submit"]{  
             padding:0.5em 1em; 
             line-height:1em; 
             cursor:pointer; 
