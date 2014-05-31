@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Jogador;
+import persistence.JogadorDAO;
 
 /**
  *
@@ -77,10 +79,11 @@ public class ConsultaJogadores extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("nomeJogador");
-        PrintWriter retorno = response.getWriter();
-        retorno.print(this.teste(username));
-        retorno.close();        
+        Jogador jogador = new Jogador();
+        jogador.setUsuario(request.getParameter("nomeJogador"));
+        
+        JogadorDAO jDAO = new JogadorDAO();
+        jDAO.salvar(username);       
     }
 
     /**
