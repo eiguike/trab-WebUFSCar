@@ -1,3 +1,4 @@
+
 <!--
 relacionada a países + jogadores + esporte
 
@@ -64,7 +65,8 @@ que jogam por esse país e esporte
                 </div>
                 <div id="consulta1">
                     <div class="resultado">
-                        <p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p><p>teste</p></div>
+                          
+                    </div>
                 </div>
                 <div id="consulta2">
                     <div class="resultado">

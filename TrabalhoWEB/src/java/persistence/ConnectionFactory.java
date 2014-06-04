@@ -20,7 +20,7 @@ public class ConnectionFactory {
     public static Connection getConnection() throws DAOException {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String conexao = "jdbc:mysql://localhost/carona";
+            String conexao = "jdbc:mysql://localhost/jogadores";
             String usuario = "root", senha = "";
 
             Connection conn = DriverManager.getConnection(conexao, usuario, senha);

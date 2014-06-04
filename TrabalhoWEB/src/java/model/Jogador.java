@@ -11,66 +11,82 @@ package model;
  * @author acer
  */
 public class Jogador {
-    private String usuario;
-    private String tipo;
-    // novos atributos
-    private String senha;
-    private String email;
+    private String nome;
+    private String sobrenome;
+    private String apelido;
+    private String esporte;
+    private String time;
 
     /**
-     * @return the usuario
+     * @return the nome
      */
-    public String getUsuario() {
-        return usuario;
+    public String getNome() {
+        return nome;
     }
 
     /**
-     * @param usuario the usuario to set
+     * @param nome the nome to set
      */
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     /**
-     * @return the tipo
+     * @return the sobrenome
      */
-    public String getTipo() {
-        return tipo;
+    public String getSobrenome() {
+        return sobrenome;
     }
 
     /**
-     * @param tipo the tipo to set
+     * @param sobrenome the sobrenome to set
      */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
     /**
-     * @return the senha
+     * @return the apelido
      */
-    public String getSenha() {
-        return senha;
+    public String getApelido() {
+        return apelido;
     }
 
     /**
-     * @param senha the senha to set
+     * @param apelido the apelido to set
      */
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setApelido(String apelido) {
+        this.apelido = apelido;
     }
 
     /**
-     * @return the email
+     * @return the esporte
      */
-    public String getEmail() {
-        return email;
+    public String getEsporte() {
+        return esporte;
     }
 
     /**
-     * @param email the email to set
+     * @param esporte the esporte to set
      */
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEsporte(String esporte) {
+        this.esporte = esporte;
     }
+
+    /**
+     * @return the time
+     */
+    public String getTime() {
+        return time;
+    }
+
+    /**
+     * @param time the time to set
+     */
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+  
     
 }

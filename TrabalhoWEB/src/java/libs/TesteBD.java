@@ -22,7 +22,7 @@ public TesteBD() {
 
 	try {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-        String conexao = "jdbc:mysql://localhost/carona";
+        String conexao = "jdbc:mysql://localhost/jogadores";
         String usuario = "root", senha = "";
         conn = DriverManager.getConnection(conexao, usuario, senha);
     
