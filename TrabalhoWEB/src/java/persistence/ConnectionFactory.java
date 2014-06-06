@@ -19,11 +19,9 @@ public class ConnectionFactory {
 
     public static Connection getConnection() throws DAOException {
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String conexao = "jdbc:mysql://localhost/jogadores";
-            String usuario = "root", senha = "";
+            Class.forName("org.postgresql.Driver").newInstance();
+            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/webtrabalho", "postgres", "postgres");
 
-            Connection conn = DriverManager.getConnection(conexao, usuario, senha);
             return conn;
         } catch (SQLException exception) {
             throw new DAOException(exception.getMessage(), exception.fillInStackTrace());

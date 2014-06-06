@@ -84,16 +84,21 @@ public class ConsultaJogadores extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String nomedoJogador = request.getParameter("nomeJogador");
+        System.out.println(nomedoJogador);
         try {
-            String nomedoJogador = request.getParameter("nomeJogador");
+            
             JogadorDAO jDAO = new JogadorDAO();
             Jogador jogador = jDAO.consultaPrimeira(nomedoJogador);
             
             // vincula o bean
             request.setAttribute("jogadorBean", jogador);
             RequestDispatcher dispatcher = null;
-            dispatcher = request.getRequestDispatcher("/consulta1.jsp");
+            if(jogador != null){
+                dispatcher = request.getRequestDispatcher("/consulta1.jsp");
+            }else{
+                dispatcher = request.getRequestDispatcher("/index.jsp");
+            }
             dispatcher.forward(request, response);
 
         } catch (SQLException exception) {

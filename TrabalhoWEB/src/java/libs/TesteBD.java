@@ -21,16 +21,14 @@ private Statement stmt;
 public TesteBD() {
 
 	try {
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
-        String conexao = "jdbc:mysql://localhost/jogadores";
-        String usuario = "root", senha = "";
-        conn = DriverManager.getConnection(conexao, usuario, senha);
-    
-		stmt = conn.createStatement();
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost/webtrabalho", "postgres", "postgres");
 
-		System.out.println("Conexão OK!!!");
+            stmt = conn.createStatement();
 
-		conn.close();
+            System.out.println("Conexão OK!!!");
+
+            conn.close();
 	} catch (Exception e) {
 		e.printStackTrace();
 		System.out.println("Erro");

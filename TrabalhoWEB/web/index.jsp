@@ -9,7 +9,7 @@ que jogam por esse país e esporte
 3 - busca relativa por jgoadores e esportes
 
 -->
-<!DOCTYPE html>
+<!DOCTYPE html>  
 
 
 
@@ -64,8 +64,8 @@ que jogam por esse país e esporte
                     <p id="texto">Lorem ipsum dolor sit amet, conseleifend, cutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dicutrum, nisl vel placerat eleifend, nulla metus dictum metus, in hendrerit augue tellus vitae nisi. Quisque ac dignissim est. Vestibulum fringilla semper tincidunt. Quisque pellentesque nisl erat, quis interdum velit fermentum egestas. Curabitur iaculis nisl ac neque pellentesque eleifend. Vestibulum eu lorem quis risus vestibulum tincidunt quis vitae justo. Quisque imperdiet vulputate cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec euismod risus, et blandit ipsum. Fusce porta massa a sagittis pellentesque. Morbi dictum tincidunt pretium. In hac habitasse platea dictumst. Donec varius porttitor augue ut dapibus. Praesent mollis odio vel vehicula porttitor.In ac orci et quam volutpat pharetra quis in ipsum. In hac habitasse platea dictumst. Nulla ut odio laoreet, tincidunt leo et, auctor nunc. Praesent molestie a nulla ut molestie. Sed lacinia, nibh id rutrum elementum, dolor velit aliquet lacus, nec fermentum turpis nunc ut lacus. Aenean facilisis iaculis dolor ut ultricies. Morbi lobortis arcu nisi, et consectetur tortor cursus vitae.Sed facilisis libero et nisl auctor, tempus </p>
                 </div>
                 <div id="consulta1">
-                    <div class="resultado">
-                          
+                    <div id="resultado1" class="resultado">
+
                     </div>
                 </div>
                 <div id="consulta2">
@@ -147,6 +147,19 @@ que jogam por esse país e esporte
                 $(".blanket").hide();
                 $(".formulario").hide();
             }
+
+
+            $('#fConsulta1').submit(function() { // catch the form's submit event
+                $.ajax({// create an AJAX call...
+                    data: $(this).serialize(), // get the form data
+                    type: $(this).attr('method'), // GET or POST
+                    url: $(this).attr('action'), // the file to call
+                    success: function(response) { // on success..
+                        $('#resultado1').html(response); // update the DIV
+                    }
+                });
+                return false; // cancel original event to prevent form submitting
+            });
         </script>
 
 

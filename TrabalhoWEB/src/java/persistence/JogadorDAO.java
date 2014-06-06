@@ -24,8 +24,8 @@ public class JogadorDAO {
         Jogador jogador;
         PreparedStatement statement;
         ResultSet set;
-        String SQL = "SELECT * FROM jogador  ";
-                                      //  + "WHERE nome = ' " + nome +  " ' ";
+        String SQL = "SELECT * FROM jogador  "
+                    + "WHERE nome = '" + nome +  "' ";
         statement = connection.prepareStatement(SQL);
         set = statement.executeQuery();
 
