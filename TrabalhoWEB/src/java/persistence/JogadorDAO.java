@@ -28,9 +28,8 @@ public class JogadorDAO {
         ResultSet set;
         String SQL = 
                 "SELECT jogador.nome, jogador.sobrenome, jogador.apelido, time.esporte, jogador_time.time FROM jogador, jogador_time, time "+
-                "WHERE jogador.nome = '"+nome+"' AND jogador_time.jogador = jogador.id_jogador AND jogador_time.time = time.nome;";
+                "WHERE jogador.nome like '"+ nome+ "' AND jogador_time.jogador = jogador.id_jogador AND jogador_time.time = time.nome;";
         
-        System.out.println(SQL);
         statement = connection.prepareStatement(SQL);
         set = statement.executeQuery();
 

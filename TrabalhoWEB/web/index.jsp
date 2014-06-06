@@ -88,6 +88,8 @@ que jogam por esse país e esporte
 
         <script>
             $(document).ready(function() {
+                
+                alert("heheheh");
                 $(".blanket").hide();
                 $("#texto").show();
                 $("#consulta1").hide();
