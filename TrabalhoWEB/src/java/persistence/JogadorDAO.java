@@ -5,9 +5,11 @@
  */
 package persistence;
 
-import persistence.ConnectionFactory;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import model.Jogador;
+import persistence.ConnectionFactory;
 /**
  *
  * @author acer
@@ -20,27 +22,29 @@ public class JogadorDAO {
         this.connection = ConnectionFactory.getConnection();
     }
     
-    public Jogador consultaPrimeira(String nome) throws SQLException{
-        Jogador jogador;
+    public List<Jogador> consultaPrimeira(String nome) throws SQLException{
+        List<Jogador> listaJogador = new ArrayList<Jogador>();
         PreparedStatement statement;
         ResultSet set;
-        String SQL = "SELECT * FROM jogador  "
-                    + "WHERE nome = '" + nome +  "' ";
+        String SQL = 
+                "SELECT jogador.nome, jogador.sobrenome, jogador.apelido, time.esporte, jogador_time.time FROM jogador, jogador_time, time "+
+                "WHERE jogador.nome = '"+nome+"' AND jogador_time.jogador = jogador.id_jogador AND jogador_time.time = time.nome;";
+        
+        System.out.println(SQL);
         statement = connection.prepareStatement(SQL);
         set = statement.executeQuery();
 
-        if (set.next()) {
-            jogador = new Jogador();
+        while (set.next()) {
+            Jogador jogador = new Jogador();
             jogador.setNome(set.getString("nome"));
             jogador.setSobrenome(set.getString("sobrenome"));
             jogador.setApelido(set.getString("apelido"));
             jogador.setEsporte(set.getString("esporte"));
             jogador.setTime(set.getString("time"));
-        } else {
-            jogador = null;
+            listaJogador.add(jogador);
         }
         
-        return jogador;
+        return listaJogador;
     }
     /*public void salvar(Jogador usuario) throws SQLException {
         PreparedStatement statement;

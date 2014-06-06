@@ -9,6 +9,7 @@ package controle;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -55,7 +56,7 @@ public class ConsultaJogadores extends HttpServlet {
             out.println("</html>");
         } finally {
             out.close();
-        }
+        }   
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -89,16 +90,12 @@ public class ConsultaJogadores extends HttpServlet {
         try {
             
             JogadorDAO jDAO = new JogadorDAO();
-            Jogador jogador = jDAO.consultaPrimeira(nomedoJogador);
+            List<Jogador> jogador = jDAO.consultaPrimeira(nomedoJogador);
             
             // vincula o bean
             request.setAttribute("jogadorBean", jogador);
             RequestDispatcher dispatcher = null;
-            if(jogador != null){
-                dispatcher = request.getRequestDispatcher("/consulta1.jsp");
-            }else{
-                dispatcher = request.getRequestDispatcher("/index.jsp");
-            }
+            dispatcher = request.getRequestDispatcher("/consulta1.jsp");
             dispatcher.forward(request, response);
 
         } catch (SQLException exception) {
