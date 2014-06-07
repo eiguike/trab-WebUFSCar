@@ -71,29 +71,32 @@ public class ConsultaJogadores extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
         String nomedoJogador = request.getParameter("nomeJogador");
-        System.out.println(nomedoJogador);
+        String pagAtual = request.getParameter("pagina");
+        int offset;
+        
+        if(pagAtual == null)
+            offset = 1;
+        else
+            offset = Integer.parseInt(pagAtual);
+        
+        if(offset <= 0)
+            offset = 1;
+        
         try {
+            int limite = 4;
             
             JogadorDAO jDAO = new JogadorDAO();
-            List<Jogador> jogador = jDAO.consultaPrimeira(nomedoJogador);
+            List<Jogador> jogador = jDAO.consultaPrimeira((offset-1)*limite,limite,nomedoJogador);
             
+            int numRegistros = jDAO.getNumResultados();
+            int numPaginas = (int) Math.ceil(numRegistros*1.0/limite);
+             
             // vincula o bean
             request.setAttribute("jogadorBean", jogador);
+            request.setAttribute("consultaAtual",nomedoJogador);
+            request.setAttribute("numPaginas", numPaginas);
+            request.setAttribute("paginaAtual",offset);
             RequestDispatcher dispatcher = null;
             dispatcher = request.getRequestDispatcher("/consulta1.jsp");
             dispatcher.forward(request, response);
@@ -107,6 +110,20 @@ public class ConsultaJogadores extends HttpServlet {
         }
 
         
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
     }
 
     /**

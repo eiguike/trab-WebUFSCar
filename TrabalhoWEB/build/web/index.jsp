@@ -40,8 +40,8 @@ que jogam por esse país e esporte
                 <div id="btn_x">
                     <a onclick="fecharBtn();">X</a>
                 </div>
-                <form id="fConsulta1" class="fconsulta" action="ConsultaJogadores" method="post">
-                    <span>Nome do Jogador: <input type="text" id="nomeJogador" name="nomeJogador"></span>
+                <form id="fConsulta1" class="fconsulta" action="ConsultaJogadores" method="get">
+                    <span>Nome do Jogador: <input type="text" class="formulario_input" id="nomeJogador" name="nomeJogador"></span>
                     <p><button type="submit" onclick="consulta1();">Consultar</button></p>
                 </form>
                 <form id="fConsulta2" class="fconsulta">
@@ -88,7 +88,6 @@ que jogam por esse país e esporte
 
         <script>
             $(document).ready(function() {
-               
                 $(".blanket").hide();
                 $("#texto").show();
                 $("#consulta1").hide();
@@ -108,6 +107,8 @@ que jogam por esse país e esporte
                     $(".blanket").show();
                     $(".formulario").show();
                     $("#fConsulta1").show();
+                    $("#nomeJogador").focus();  
+                    $("#nomeJogador").val('');
                     $("#fConsulta2").hide();
                     $("#fConsulta3").hide();
                     $("#consulta2").hide();
@@ -138,6 +139,28 @@ que jogam por esse país e esporte
                     $("#consulta2").hide();
                     $("#texto").hide();
                 });
+
+                $.fn.capitalize = function() {
+
+                    //iterate through each of the elements passed in, `$.each()` is faster than `.each()
+                    $.each(this, function() {
+
+                        //split the value of this input by the spaces
+                        var split = this.value.split(' ');
+
+                        //iterate through each of the "words" and capitalize them
+                        for (var i = 0, len = split.length; i < len; i++) {
+                            split[i] = split[i].charAt(0).toUpperCase() + split[i].slice(1);
+                        }
+
+                        //re-join the string and set the value of the element
+                        this.value = split.join(' ');
+                    });
+                    return this;
+                };
+                $('#nomeJogador').on('keyup', function() {
+                    $(this).capitalize();
+                }).capitalize();
             });
             function consulta1() {
                 $(".formulario").hide();
@@ -159,8 +182,18 @@ que jogam por esse país e esporte
                         $('#resultado1').html(response); // update the DIV
                     }
                 });
-                return false; // cancel original event to prevent form submitting
+                return false;
             });
+            
+            function OpenPage(url)
+            {
+                    $.get(url, function(response)
+                    {
+                            $('#resultado1').html(response);
+                    });
+            }
+
+
         </script>
 
 

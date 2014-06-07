@@ -17,19 +17,37 @@ import persistence.ConnectionFactory;
 public class JogadorDAO {
 
     private Connection connection;
+    private int numResultados;
 
     public JogadorDAO() throws DAOException {
         this.connection = ConnectionFactory.getConnection();
     }
     
-    public List<Jogador> consultaPrimeira(String nome) throws SQLException{
+    public List<Jogador> consultaPrimeira(int offset, int limite, String nome) throws SQLException{
+        int i = 0;
         List<Jogador> listaJogador = new ArrayList<Jogador>();
         PreparedStatement statement;
         ResultSet set;
-        String SQL = 
-                "SELECT jogador.nome, jogador.sobrenome, jogador.apelido, time.esporte, jogador_time.time FROM jogador, jogador_time, time "+
-                "WHERE jogador.nome like '"+ nome+ "' AND jogador_time.jogador = jogador.id_jogador AND jogador_time.time = time.nome;";
         
+        String SQL = 
+                "SELECT COUNT(*) as total FROM jogador, jogador_time, time "+
+                "WHERE jogador.nome like '"+ nome+ "' AND jogador_time.jogador = jogador.id_jogador AND jogador_time.time = time.nome" ;
+        System.out.println(SQL);
+        
+        statement = connection.prepareStatement(SQL);
+        set = statement.executeQuery();
+        
+        set.next();
+        //this.setNumResultados(set.getInt(1));
+        this.numResultados = set.getInt(1);
+        statement.clearParameters();
+        
+        SQL =
+                "SELECT jogador.nome, jogador.sobrenome, jogador.apelido, time.esporte, jogador_time.time FROM jogador, jogador_time, time "+
+                "WHERE jogador.nome like '"+ nome+ "' AND jogador_time.jogador = jogador.id_jogador AND jogador_time.time = time.nome"
+                + " ORDER BY sobrenome LIMIT "+limite+" OFFSET "+ offset;
+        
+        System.out.println(SQL);
         statement = connection.prepareStatement(SQL);
         set = statement.executeQuery();
 
@@ -41,8 +59,8 @@ public class JogadorDAO {
             jogador.setEsporte(set.getString("esporte"));
             jogador.setTime(set.getString("time"));
             listaJogador.add(jogador);
-        }
-        
+            i=i+1;
+        }        
         return listaJogador;
     }
     /*public void salvar(Jogador usuario) throws SQLException {
@@ -56,5 +74,19 @@ public class JogadorDAO {
 
         statement.executeUpdate();
     }*/
+
+    /**
+     * @return the numResultados
+     */
+    public int getNumResultados() {
+        return numResultados;
+    }
+
+    /**
+     * @param numResultados the numResultados to set
+     */
+    public void setNumResultados(int numResultados) {
+        this.numResultados = numResultados;
+    }
 
 }
