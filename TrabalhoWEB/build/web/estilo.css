@@ -124,7 +124,7 @@ p, a{
     height: auto;
     position: absolute;
     background-color: white;
-    margin-left: 36%;
+    margin-left: 40%;
     margin-right: 25%;
     border-radius: 10px;
 }
@@ -291,4 +291,8 @@ td.text-center {
 
 td.text-right {
     text-align: right;
+}
+
+#paginadores{
+    text-align: center;
 }

@@ -9,7 +9,7 @@
 
 <%
     List<Jogador> listaJogador = (List<Jogador>) request.getAttribute("jogadorBean");
-    if (listaJogador == null) {
+    if (listaJogador.isEmpty()) {
 %>
 <p>Não foram encontrados resultados.</p>
 <%
@@ -17,13 +17,15 @@
     String nome = (String) request.getAttribute("consultaAtual");
     int numPaginas = (Integer) request.getAttribute("numPaginas");
     int pagAtual = (Integer) request.getAttribute("paginaAtual");
-    out.println("<p>");
+    String link = "ConsultaJogadores?nomeJogador=" + nome + "&pagina=";   
+    
+    out.println("<p id=\"paginadores\">");
     if (pagAtual != 1) {
-        out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual - 1) + "');\" href=\"#\"><< </a>");
+        out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
     }
     out.println("" + pagAtual + "");
     if (pagAtual < numPaginas) {
-        out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual + 1) + "');\" href=\"#\"> >></a>");
+        out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
     }
 
     out.println("</p>");
@@ -45,14 +47,14 @@
         %>
 </table>
 <%
-        out.println("<p>");
+        out.println("<p id=\"paginadores\">");
 
         if (pagAtual != 1) {
-            out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual - 1) + "');\" href=\"#\"><< </a>");
+            out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
         }
-        out.println("" + pagAtual + "");
+        out.println("<a onclick=\"funcao();\"> " + pagAtual + "</a>");
         if (pagAtual < numPaginas) {
-            out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual + 1) + "');\" href=\"#\"> >></a>");
+            out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual + 1) + "');\">></a>");
         }
 
         out.println("</p>");
