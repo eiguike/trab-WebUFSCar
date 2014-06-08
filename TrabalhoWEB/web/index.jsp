@@ -89,11 +89,8 @@ que jogam por esse país e esporte
             $(document).ready(function() {
                 $(".blanket").hide();
                 $("#texto").show();
-                $("#consulta1").hide();
-                $("#consulta2").hide();
-                $("#consulta3").hide();
-                $("#consulta4").hide();
                 $(".formulario").hide();
+                $(".resultado").hide();
 
                 $("#bconsulta0").click(function() {
                     $("#texto").show();
