@@ -12,6 +12,10 @@
         <servlet-name>ConsultaEsporte</servlet-name>
         <servlet-class>controle.ConsultaEsporte</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConsultaPais</servlet-name>
+        <servlet-class>controle.ConsultaPais</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConsultaJogadores</servlet-name>
         <url-pattern>/ConsultaJogadores</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ConsultaEsporte</servlet-name>
         <url-pattern>/ConsultaEsporte</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultaPais</servlet-name>
+        <url-pattern>/ConsultaPais</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
