@@ -30,7 +30,7 @@ public class TimeDAO {
         ResultSet set;
         
         String SQL = 
-                "SELECT COUNT(*) FROM time, pais WHERE pais.nome like '"+nome+"' AND time.pais=pais.sigla2letras";
+                "SELECT COUNT(*) FROM time, pais WHERE pais.nome like '"+nome+"%' AND time.pais=pais.sigla2letras";
                 
         System.out.println(SQL);
         
@@ -43,7 +43,7 @@ public class TimeDAO {
         statement.clearParameters();
         //time.nome='"+nome+"' AND
         SQL =   
-                "SELECT time.nome,esporte,estadio,pais.nome AS pais FROM time, pais WHERE pais.nome ='"+nome+"' AND time.pais=pais.sigla2letras"
+                "SELECT time.nome,esporte,estadio,pais.nome AS pais FROM time, pais WHERE pais.nome like '"+nome+"%' AND time.pais=pais.sigla2letras"
                 + " ORDER BY time.nome LIMIT "+limite+" OFFSET "+offset;
         
         System.out.println(SQL);

@@ -8,6 +8,10 @@
         <servlet-name>ConsultaTime</servlet-name>
         <servlet-class>controle.ConsultaTime</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConsultaEsporte</servlet-name>
+        <servlet-class>controle.ConsultaEsporte</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConsultaJogadores</servlet-name>
         <url-pattern>/ConsultaJogadores</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ConsultaTime</servlet-name>
         <url-pattern>/ConsultaTime</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultaEsporte</servlet-name>
+        <url-pattern>/ConsultaEsporte</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

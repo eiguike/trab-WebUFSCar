@@ -3,35 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistence;
 
+package persistence;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import model.Jogador;
+import model.Time;
 import persistence.ConnectionFactory;
 /**
  *
- * @author acer
+ * @author schultz
  */
-public class JogadorDAO {
+public class EsportesDAO {
 
     private Connection connection;
     private int numResultados;
 
-    public JogadorDAO() throws DAOException {
+    public EsportesDAO() throws DAOException {
         this.connection = ConnectionFactory.getConnection();
     }
     
-    public List<Jogador> consultaPrimeira(int offset, int limite, String nome) throws SQLException{
+    public List<Time> consultaTres(int offset, int limite, String nome) throws SQLException{
         int i = 0;
-        List<Jogador> listaJogador = new ArrayList<Jogador>();
+        List<Time> listaTime = new ArrayList<Time>();
         PreparedStatement statement;
         ResultSet set;
         
         String SQL = 
-                "SELECT COUNT(*) as total FROM jogador, jogador_time, time "+
-                "WHERE jogador.nome like '"+ nome+ "' AND jogador_time.jogador = jogador.id_jogador AND jogador_time.time = time.nome" ;
+            "select count(*) from time, pais "+ 
+            "where time.esporte like '"+nome+"%' AND pais.sigla2letras = time.pais";
         System.out.println(SQL);
         
         statement = connection.prepareStatement(SQL);
@@ -43,25 +43,23 @@ public class JogadorDAO {
         statement.clearParameters();
         
         SQL =
-                "SELECT jogador.nome, jogador.sobrenome, jogador.apelido, time.esporte, jogador_time.time FROM jogador, jogador_time, time "+
-                "WHERE jogador.nome like '"+ nome+ "%' AND jogador_time.jogador = jogador.id_jogador AND jogador_time.time = time.nome"
-                + " ORDER BY sobrenome LIMIT "+limite+" OFFSET "+ offset;
-        
+        "select time.nome, time.esporte, pais.nome AS pais from time, pais "+ 
+        "where time.esporte like '"+nome+"%' AND pais.sigla2letras = time.pais ORDER BY time.nome"
+                + " LIMIT "+limite+" OFFSET "+ offset;      
+
         System.out.println(SQL);
         statement = connection.prepareStatement(SQL);
         set = statement.executeQuery();
 
         while (set.next()) {
-            Jogador jogador = new Jogador();
-            jogador.setNome(set.getString("nome"));
-            jogador.setSobrenome(set.getString("sobrenome"));
-            jogador.setApelido(set.getString("apelido"));
-            jogador.setEsporte(set.getString("esporte"));
-            jogador.setTime(set.getString("time"));
-            listaJogador.add(jogador);
+            Time time = new Time();
+            time.setNome(set.getString("nome"));
+            time.setEsporte(set.getString("esporte"));
+            time.setPais(set.getString("pais"));
+            listaTime.add(time);
             i=i+1;
         }        
-        return listaJogador;
+        return listaTime;
     }
 
     public int getNumResultados() {
@@ -74,5 +72,4 @@ public class JogadorDAO {
     public void setNumResultados(int numResultados) {
         this.numResultados = numResultados;
     }
-
 }

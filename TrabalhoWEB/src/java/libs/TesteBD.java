@@ -22,7 +22,7 @@ public TesteBD() {
 
 	try {
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost/webtrabalho", "postgres", "postgres");
+            conn = DriverManager.getConnection("jdbc:postgresql://192.168.1.11/webtrabalho", "postgres", "postgres");
 
             stmt = conn.createStatement();
 

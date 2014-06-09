@@ -32,7 +32,7 @@ que jogam por esse país e esporte
                         <a href="#" id="bconsulta4">Busca por Times</a>
                         <a href="#" id="bconsulta1">Buscar por Jogadores</a>
                         <a href="#" id="bconsulta2">Buscar por País</a>
-                        <a href="#" id="bconsulta3">Buscar por Jogadores e Esporte</a>
+                        <a href="#" id="bconsulta3">Buscar por Esporte</a>
                     </nav>
                 </div>
             </div>
@@ -53,10 +53,9 @@ que jogam por esse país e esporte
                     </span>
                     <p><button type="button" onclick="consulta1();">Buscar</button></p>
                 </form>
-                <form id="fConsulta3" class="fconsulta">
-                    <span>Nome do Jogador: <input type="text" name="nomejogador"></span>
-                    <br><span>Esporte: <input type="text" name"esporte"></span>
-                    <p><button type="button" onclick="consulta1();">Consultar</button></p>
+                <form id="fConsulta3" class="fconsulta" action="ConsultaEsporte" method="get">                    
+                    <span>Esporte: <input type="text" name="esporte" id="esporte"></span>
+                    <p><button type="submit">Consultar</button></p>
                 </form>
                 <form id="fConsulta4" class="fconsulta" action="ConsultaTime" method="get">
                     <span>Pais: <input type="text" class="formulario_input" id="nomeDoTime" name="nomeDoTime"></span>
@@ -121,11 +120,9 @@ que jogam por esse país e esporte
                 });
 
                 $("#bconsulta3").click(function() {
-                    $("#consulta3").show();
                     $(".blanket").show();
                     $(".formulario").show();
-                    $("#fConsulta1").hide();
-                    $("#fConsulta2").hide();
+                    $(".fconsulta").hide();
                     $("#fConsulta3").show();
                     $(".resultado").show();
                     $("#texto").hide();
@@ -176,6 +173,23 @@ que jogam por esse país e esporte
             $('#fConsulta1').submit(function() { // catch the form's submit event
                 if($('#nomeJogador').val() === ''){
                     alert("Você precisa digitar algum nome!");
+                    return false;
+                }
+                $.ajax({// create an AJAX call...
+                    data: $(this).serialize(), // get the form data
+                    type: $(this).attr('method'), // GET or POST
+                    url: $(this).attr('action'), // the file to call
+                    success: function(response) { // on success..
+                        $('.resultado').html(response); // update the DIV
+                        $('html,body').scrollTop(400);
+                        fecharBtn();
+                    }
+                });
+                return false;
+            });
+            $('#fConsulta3').submit(function() { // catch the form's submit event
+                if($('#esporte').val() === ''){
+                    alert("Você precisa digitar algum esporte!");
                     return false;
                 }
                 $.ajax({// create an AJAX call...

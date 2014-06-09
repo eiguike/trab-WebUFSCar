@@ -36,7 +36,7 @@ public class PaisDAO {
         
         String SQL = 
                 "SELECT COUNT(*) as total FROM jogador, jogador_time, time, pais, cidade "+
-                "WHERE pais.nome like '"+ nome+ "' AND cidade.fk_pais = pais.sigla2letras AND jogador.datanasc_cidade = cidade.id";
+                "WHERE pais.nome like '"+ nome+ "%' AND cidade.fk_pais = pais.sigla2letras AND jogador.datanasc_cidade = cidade.id";
         System.out.println(SQL);
         
         statement = connection.prepareStatement(SQL);
