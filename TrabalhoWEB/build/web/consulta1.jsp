@@ -52,7 +52,7 @@
         if (pagAtual != 1) {
             out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
         }
-        out.println("<a onclick=\"funcao();\"> " + pagAtual + "</a>");
+        out.println("<a  onclick=\"funcao('"+nome+"','"+pagAtual+"','"+numPaginas+"');\"> " + pagAtual + "</a>");
         if (pagAtual < numPaginas) {
             out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual + 1) + "');\">></a>");
         }
