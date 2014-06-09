@@ -49,7 +49,7 @@ public class PaisDAO {
         
         SQL = "SELECT jogador.nome, jogador.sobrenome, jogador.apelido, time.esporte, jogador_time.time, cidade.nome as cidade_nome, pais.sigla2letras"
                 +"FROM jogador, jogador_time, time "+
-                "WHERE pais.nome like '"+ nome+ "' AND cidade.fk_pais = pais.sigla2letras AND jogador.datanasc_cidade = cidade.id"
+                "WHERE pais.nome like '"+ nome+ "' AND cidade.pais = pais.sigla2letras AND jogador.datanasc_cidade = cidade.id"
                 + " ORDER BY sobrenome LIMIT "+limite+" OFFSET "+ offset;
         
         System.out.println(SQL);
