@@ -136,16 +136,16 @@ que jogam por esse país e esporte
                     $("#nomeDoTime").focus();  
                     $("#nomeDoTime").val('');      
                     
-                    $.ajax({// create an AJAX call...
-                        data: $('#fConsulta5').serialize(), // get the form data
-                        type: $('#fConsulta5').attr('method'), // GET or POST
-                        url: $('#fConsulta5').attr('action'), // the file to call
-                        success: function(response) { // on success..
-                            $('.paislista').html(response); // update the DIV
-                        }
-                    });                 
+      
                 });                
-
+                $.ajax({// create an AJAX call...
+                    data: $('#fConsulta5').serialize(), // get the form data
+                    type: $('#fConsulta5').attr('method'), // GET or POST
+                    url: $('#fConsulta5').attr('action'), // the file to call
+                    success: function(response) { // on success..
+                        $('.paislista').html(response); // update the DIV
+                    }
+                });           
                 $.fn.capitalize = function() {
 
                     //iterate through each of the elements passed in, `$.each()` is faster than `.each()
