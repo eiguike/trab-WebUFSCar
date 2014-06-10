@@ -65,7 +65,6 @@ public class ConsultaEsporte extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nomedoEsporte = request.getParameter("esporte");
@@ -127,7 +126,6 @@ public class ConsultaEsporte extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-    @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>

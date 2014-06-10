@@ -29,10 +29,10 @@ que jogam por esse país e esporte
                 <div id="menu">
                     <nav id="opcoes">
                         <a href="#" id="bconsulta0">Home</a>
-                        <a href="#" id="bconsulta4">Busca por Times</a>
-                        <a href="#" id="bconsulta1">Buscar por Jogadores</a>
+                        <a href="#" id="bconsulta4">Buscar Times por País</a>
+                        <a href="#" id="bconsulta1">Buscar Jogadores</a>
                         <a href="#" id="bconsulta2">Buscar por País</a>
-                        <a href="#" id="bconsulta3">Buscar por Esporte</a>
+                        <a href="#" id="bconsulta3">Buscar Times por Esporte</a>
                     </nav>
                 </div>
             </div>
@@ -126,6 +126,8 @@ que jogam por esse país e esporte
                     $("#fConsulta3").show();
                     $(".resultado").show();
                     $("#texto").hide();
+                    $("#esporte").focus();
+                    $("#esporte").val('');
                 });
                 $("#bconsulta4").click(function() {
                     $(".blanket").show();
@@ -162,6 +164,9 @@ que jogam por esse país e esporte
                 $('#nomeDoTime').on('keyup', function() {
                     $(this).capitalize();
                 }).capitalize();
+                $('#esporte').on('keyup', function() {
+                    $(this).capitalize();
+                }).capitalize();                
             });
 
             function fecharBtn() {
@@ -224,8 +229,7 @@ que jogam por esse país e esporte
             });            
             
             function OpenPage(url){
-                    $.get(url, function(response)
-                    {
+                    $.get(url, function(response){
                             $('html,body').scrollTop(400);
                             $('.resultado').html(response);
 

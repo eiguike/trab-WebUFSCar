@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Charmander/Documents/GitHub/eiguike.github.io/TrabalhoWEB/web/consulta1.jsp</file>
+            <file>file:/home/floss/Documents/git/eiguike.github.io/TrabalhoWEB/src/java/libs/TesteBD.java</file>
+            <file>file:/home/floss/Documents/git/eiguike.github.io/TrabalhoWEB/web/index.jsp</file>
+            <file>file:/home/floss/Documents/git/eiguike.github.io/TrabalhoWEB/src/java/controle/ConsultaEsporte.java</file>
+            <file>file:/home/floss/Documents/git/eiguike.github.io/TrabalhoWEB/src/java/controle/ConsultaJogadores.java</file>
+            <file>file:/home/floss/Documents/git/eiguike.github.io/TrabalhoWEB/src/java/controle/ConsultaTime.java</file>
+            <file>file:/home/floss/Documents/git/eiguike.github.io/TrabalhoWEB/src/java/persistence/PaisDAO.java</file>
         </group>
     </open-files>
 </project-private>

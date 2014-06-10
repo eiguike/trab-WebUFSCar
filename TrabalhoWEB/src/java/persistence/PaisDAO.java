@@ -35,8 +35,13 @@ public class PaisDAO {
         ResultSet set;
         
         String SQL = 
+<<<<<<< Updated upstream
                 "SELECT COUNT(*) as total FROM jogador, time, pais, cidade "+
                 "WHERE pais.nome like '"+ nome+ "' AND cidade.pais = pais.sigla2letras AND cidade.id = jogador.datanasc_cidade";
+=======
+                "SELECT COUNT(*) as total FROM jogador, jogador_time, time, pais, cidade "+
+                "WHERE pais.nome like '"+ nome+ "%' AND cidade.pais = pais.sigla2letras AND jogador.datanasc_cidade = cidade.id";
+>>>>>>> Stashed changes
         System.out.println(SQL);
         
         statement = connection.prepareStatement(SQL);
