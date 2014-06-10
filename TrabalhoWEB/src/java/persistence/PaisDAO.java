@@ -35,8 +35,8 @@ public class PaisDAO {
         ResultSet set;
         
         String SQL = 
-                "SELECT COUNT(*) as total FROM jogador, jogador_time, time, pais, cidade "+
-                "WHERE pais.nome like '"+ nome+ "%' AND cidade.fk_pais = pais.sigla2letras AND jogador.datanasc_cidade = cidade.id";
+                "SELECT COUNT(*) as total FROM jogador, time, pais, cidade "+
+                "WHERE pais.nome like '"+ nome+ "' AND cidade.pais = pais.sigla2letras AND cidade.id = jogador.datanasc_cidade";
         System.out.println(SQL);
         
         statement = connection.prepareStatement(SQL);
@@ -48,8 +48,9 @@ public class PaisDAO {
         statement.clearParameters();
         
         SQL = "SELECT jogador.nome, jogador.sobrenome, jogador.apelido, time.esporte, jogador_time.time, cidade.nome as cidade_nome, pais.sigla2letras"
-                +"FROM jogador, jogador_time, time "+
-                "WHERE pais.nome like '"+ nome+ "' AND cidade.pais = pais.sigla2letras AND jogador.datanasc_cidade = cidade.id"
+                +"FROM jogador, jogador_time, time, cidade, pais "+
+                "WHERE pais.nome like '"+ nome+ "' AND cidade.pais = pais.sigla2letras AND cidade.id = jogador.datanasc_cidade"
+                + "AND jogador.id_jogador = jogador_time.jogador AND jogador_time.time = time.nome"
                 + " ORDER BY sobrenome LIMIT "+limite+" OFFSET "+ offset;
         
         System.out.println(SQL);
