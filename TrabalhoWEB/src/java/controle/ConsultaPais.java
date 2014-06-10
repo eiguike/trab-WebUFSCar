@@ -59,7 +59,7 @@ public class ConsultaPais extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nome = request.getParameter("nomeDoPais");
+        String nome = request.getParameter("nomePais");
         String pagAtual = request.getParameter("pagina");
         int offset;
         
@@ -86,7 +86,7 @@ public class ConsultaPais extends HttpServlet{
             request.setAttribute("numPaginas", numPaginas);
             request.setAttribute("paginaAtual",offset);
             RequestDispatcher dispatcher = null;
-            dispatcher = request.getRequestDispatcher("/consulta4.jsp");
+            dispatcher = request.getRequestDispatcher("/consulta2.jsp");
             dispatcher.forward(request, response);
 
         } catch (SQLException exception) {
