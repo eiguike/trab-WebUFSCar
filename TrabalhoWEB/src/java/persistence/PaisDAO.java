@@ -49,9 +49,9 @@ public class PaisDAO {
         statement.clearParameters();
         
         SQL = "SELECT jogador.nome, jogador.sobrenome, jogador.apelido, time.esporte, jogador_time.time, cidade.nome as cidade_nome, pais.sigla2letras"
-                +"FROM jogador, jogador_time, time, cidade, pais "+
+                +" FROM jogador, jogador_time, time, cidade, pais "+
                 "WHERE pais.nome like '"+ nome+ "' AND cidade.pais = pais.sigla2letras AND cidade.id = jogador.datanasc_cidade"
-                + "AND jogador.id_jogador = jogador_time.jogador AND jogador_time.time = time.nome"
+                + " AND jogador.id_jogador = jogador_time.jogador AND jogador_time.time = time.nome"
                 + " ORDER BY sobrenome LIMIT "+limite+" OFFSET "+ offset;
         
         System.out.println(SQL);
@@ -61,9 +61,14 @@ public class PaisDAO {
         while (set.next()) {
             Pais pais = new Pais();
             Jogador jogador = new Jogador();
+            String apelido = null;
             jogador.setNome(set.getString("nome"));
             jogador.setSobrenome(set.getString("sobrenome"));
-            jogador.setApelido(set.getString("apelido"));
+            apelido = set.getString("apelido");
+            if(apelido == null)
+                jogador.setApelido(" ");
+            else
+                jogador.setApelido(apelido);
             jogador.setEsporte(set.getString("esporte"));
             jogador.setTime(set.getString("time"));
             pais.setJogador(jogador);
