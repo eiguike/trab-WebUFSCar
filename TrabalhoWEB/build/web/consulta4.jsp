@@ -21,11 +21,11 @@
 
     if (pagAtual != 1) {
 
-        out.println("<a onclick=\"OpenPage('ConsultaTime?nomeDoTime=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
+        out.println("<a onclick=\"OpenPage('ConsultaTime?nomePais=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
     }
     out.println("" + pagAtual + "");
     if (pagAtual < numPaginas) {
-        out.println("<a onclick=\"OpenPage('ConsultaTime?nomeDoTime=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
+        out.println("<a onclick=\"OpenPage('ConsultaTime?nomePais=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
     }
 
     out.println("</p>");
@@ -48,11 +48,11 @@
         out.println("<p id=\"paginadores\">");
 
         if (pagAtual != 1) {
-            out.println("<a onclick=\"OpenPage('ConsultaTime?nomeDoTime=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
+            out.println("<a onclick=\"OpenPage('ConsultaTime?nomePais=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
         }
         out.println("" + pagAtual + "");
         if (pagAtual < numPaginas) {
-            out.println("<a onclick=\"OpenPage('ConsultaTime?nomeDoTime=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
+            out.println("<a onclick=\"OpenPage('ConsultaTime?nomePais=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
         }
 
         out.println("</p>");

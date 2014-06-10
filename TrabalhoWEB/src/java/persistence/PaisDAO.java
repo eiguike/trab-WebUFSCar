@@ -28,6 +28,26 @@ public class PaisDAO {
         this.connection = ConnectionFactory.getConnection();
     }
     
+    public List<Pais> listaPais() throws SQLException{
+        List<Pais> listaPais = new ArrayList<Pais>();
+        PreparedStatement statement;
+        ResultSet set;
+        
+        String SQL = 
+                "SELECT nome FROM pais";
+        
+        statement = connection.prepareStatement(SQL);
+        set = statement.executeQuery();
+        
+        while(set.next()){
+            Pais pais = new Pais();
+            pais.setNome(set.getString("nome"));
+            listaPais.add(pais);
+        }
+        
+        return listaPais;        
+    }
+    
     public List<Pais> consultaSegunda(int offset, int limite, String nome) throws SQLException{
         int i = 0;
         List<Pais> listaPais = new ArrayList<Pais>();

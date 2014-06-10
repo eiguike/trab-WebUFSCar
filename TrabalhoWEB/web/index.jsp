@@ -47,9 +47,7 @@ que jogam por esse país e esporte
                 </form>
                 <form id="fConsulta2" class="fconsulta">
                     <span>
-                        País: <select name="pais">
-                            <option value="brasil">Brasil</option>
-                        </select>
+                        País: <div class="paislista"></div>
                     </span>
                     <p><button type="button" onclick="consulta1();">Buscar</button></p>
                 </form>
@@ -58,7 +56,7 @@ que jogam por esse país e esporte
                     <p><button type="submit">Consultar</button></p>
                 </form>
                 <form id="fConsulta4" class="fconsulta" action="ConsultaTime" method="get">
-                    <span>Pais: <input type="text" class="formulario_input" id="nomeDoTime" name="nomeDoTime"></span>
+                    <span>Pais: <div class="paislista"></div></span>
                     <p><button type="submit">Consultar</button></p>
                 </form>                
             </div>
@@ -83,7 +81,10 @@ que jogam por esse país e esporte
                 <p>Trabalho de Web - UFSCar Sorocaba - melhor visualizado com Firefox e em resolução 1920x1080</p>
             </div>	
         </div>
-
+        
+        <div id="paraesconder">
+        <form id="fConsulta5" action="ConsultaPaisLista" method="get"></form>
+        </div>
         <script>
             $(document).ready(function() {
                 $(".blanket").hide();
@@ -137,7 +138,16 @@ que jogam por esse país e esporte
                     $("#fConsulta4").show();   
                     $("#texto").hide();
                     $("#nomeDoTime").focus();  
-                    $("#nomeDoTime").val('');                    
+                    $("#nomeDoTime").val('');      
+                    
+                    $.ajax({// create an AJAX call...
+                        data: $('#fConsulta5').serialize(), // get the form data
+                        type: $('#fConsulta5').attr('method'), // GET or POST
+                        url: $('#fConsulta5').attr('action'), // the file to call
+                        success: function(response) { // on success..
+                            $('.paislista').html(response); // update the DIV
+                        }
+                    });                 
                 });                
 
                 $.fn.capitalize = function() {
@@ -245,10 +255,5 @@ que jogam por esse país e esporte
 
 
         </script>
-
-
     </body>
-
-
-
 </html>

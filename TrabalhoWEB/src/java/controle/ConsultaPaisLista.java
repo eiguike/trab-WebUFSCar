@@ -17,15 +17,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Time;
+import model.Pais;
 import persistence.DAOException;
-import persistence.TimeDAO;
+import persistence.PaisDAO;
 
 /**
  *
  * @author floss
  */
-public class ConsultaTime extends HttpServlet {
+public class ConsultaPaisLista extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,10 +45,10 @@ public class ConsultaTime extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConsultaTime</title>");            
+            out.println("<title>Servlet ConsultaPaisLista</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConsultaTime at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ConsultaPaisLista at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {
@@ -68,44 +68,23 @@ public class ConsultaTime extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nome = request.getParameter("nomePais");
-        String pagAtual = request.getParameter("pagina");
-        int offset;
-        
-        if(pagAtual == null)
-            offset = 1;
-        else
-            offset = Integer.parseInt(pagAtual);
-        
-        if(offset <= 0)
-            offset = 1;
-        
-        try {
-            int limite = 4;
-            
-            TimeDAO tDAO = new TimeDAO();
-            List<Time> time = tDAO.consultaQuarta((offset-1)*limite,limite,nome);
-            
-            int numRegistros = tDAO.getNumResultados();
-            int numPaginas = (int) Math.ceil(numRegistros*1.0/limite);
+        try {            
+            PaisDAO pDAO = new PaisDAO();
+            List<Pais> pais = pDAO.listaPais();
              
             // vincula o bean
-            request.setAttribute("timeBean", time);
-            request.setAttribute("consultaAtual",nome);
-            request.setAttribute("numPaginas", numPaginas);
-            request.setAttribute("paginaAtual",offset);
+            request.setAttribute("listapaisBean", pais);
             RequestDispatcher dispatcher = null;
-            dispatcher = request.getRequestDispatcher("/consulta4.jsp");
+            dispatcher = request.getRequestDispatcher("/consulta5.jsp");
             dispatcher.forward(request, response);
 
         } catch (SQLException exception) {
-            Logger.getLogger(Time.class.getName()).log(Level.SEVERE, null, exception);
+            Logger.getLogger(Pais.class.getName()).log(Level.SEVERE, null, exception);
             throw new ServletException(exception.getMessage());
         } catch (DAOException exception) {
-            Logger.getLogger(Time.class.getName()).log(Level.SEVERE, null, exception);
+            Logger.getLogger(Pais.class.getName()).log(Level.SEVERE, null, exception);
             throw new ServletException(exception.getMessage());
         }
-
     }
 
     /**
