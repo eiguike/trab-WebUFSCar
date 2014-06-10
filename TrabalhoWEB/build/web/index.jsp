@@ -11,8 +11,6 @@ que jogam por esse país e esporte
 -->
 <!DOCTYPE html>  
 
-
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -45,11 +43,11 @@ que jogam por esse país e esporte
                     <span>Nome do Jogador: <input type="text" class="formulario_input" id="nomeJogador" name="nomeJogador"></span>
                     <p><button type="submit">Consultar</button></p>
                 </form>
-                <form id="fConsulta2" class="fconsulta">
+                <form id="fConsulta2" class="fconsulta" action="ConsultaPais" method="get">
                     <span>
                         País: <div class="paislista"></div>
                     </span>
-                    <p><button type="button" onclick="consulta1();">Buscar</button></p>
+                    <p><button type="submit">Consultar</button></p>
                 </form>
                 <form id="fConsulta3" class="fconsulta" action="ConsultaEsporte" method="get">                    
                     <span>Esporte: <input type="text" name="esporte" id="esporte"></span>
@@ -110,13 +108,11 @@ que jogam por esse país e esporte
                 });
 
                 $("#bconsulta2").click(function() {
-                    $("#consulta2").show();
                     $(".blanket").show();
                     $(".formulario").show();
-                    $("#fConsulta1").hide();
-                    $("#fConsulta2").show();
-                    $("#fConsulta3").hide();
+                    $(".fconsulta").hide();                 
                     $(".resultado").show();
+                    $("#fConsulta2").show();   
                     $("#texto").hide();
                 });
 
@@ -202,6 +198,20 @@ que jogam por esse país e esporte
                 });
                 return false;
             });
+            $('#fConsulta2').submit(function() { // catch the form's submit event
+                $.ajax({// create an AJAX call...
+                    data: $(this).serialize(), // get the form data
+                    type: $(this).attr('method'), // GET or POST
+                    url: $(this).attr('action'), // the file to call
+                    success: function(response) { // on success..
+                        $('.resultado').html(response); // update the DIV
+                        $('html,body').scrollTop(400);
+                        fecharBtn();
+                    }
+                });
+                return false;
+            });
+                        
             $('#fConsulta3').submit(function() { // catch the form's submit event
                 if($('#esporte').val() === ''){
                     alert("Você precisa digitar algum esporte!");
@@ -221,10 +231,6 @@ que jogam por esse país e esporte
             });
             
             $('#fConsulta4').submit(function() { // catch the form's submit event
-                if($('#nomeDoTime').val() === ''){
-                    alert("Você precisa digitar algum pais!");
-                    return false;
-                }
                 $.ajax({// create an AJAX call...
                     data: $(this).serialize(), // get the form data
                     type: $(this).attr('method'), // GET or POST

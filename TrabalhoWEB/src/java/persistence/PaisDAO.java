@@ -54,20 +54,24 @@ public class PaisDAO {
         PreparedStatement statement;
         ResultSet set;
         
-        String SQL = 
-                "SELECT COUNT(*) as total FROM jogador, time, pais, cidade "+
-                "WHERE pais.nome like '"+ nome+ "' AND cidade.pais = pais.sigla2letras AND cidade.id = jogador.datanasc_cidade";
+        String SQL;
         
-        System.out.println(SQL);
-        
-        statement = connection.prepareStatement(SQL);
-        set = statement.executeQuery();
-        
-        set.next();
-        //this.setNumResultados(set.getInt(1));
-        this.numResultados = set.getInt(1);
-        statement.clearParameters();
-        
+        if(offset == 0){
+            SQL = 
+                    "SELECT COUNT(*) as total FROM jogador, time, pais, cidade "+
+                    "WHERE pais.nome like '"+ nome+ "' AND cidade.pais = pais.sigla2letras AND cidade.id = jogador.datanasc_cidade";
+
+            System.out.println(SQL);
+
+            statement = connection.prepareStatement(SQL);
+            set = statement.executeQuery();
+
+            set.next();
+            //this.setNumResultados(set.getInt(1));
+            this.numResultados = set.getInt(1);
+            statement.clearParameters();     
+        }  
+      
         SQL = "SELECT jogador.nome, jogador.sobrenome, jogador.apelido, time.esporte, jogador_time.time, cidade.nome as cidade_nome, pais.sigla2letras"
                 +" FROM jogador, jogador_time, time, cidade, pais "+
                 "WHERE pais.nome like '"+ nome+ "' AND cidade.pais = pais.sigla2letras AND cidade.id = jogador.datanasc_cidade"
