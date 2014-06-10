@@ -1,13 +1,9 @@
 
 <!--
-relacionada a países + jogadores + esporte
-
-consulta - oq ela consulta hue
-1 - busca relativa por jogadores
-2 - relacionada a países: busca por países e retorna os jogadores
-que jogam por esse país e esporte
-3 - busca relativa por jgoadores e esportes
-
+Trabalho de Web
+490016 - Henrique Teruo Eihara
+489999 - Gustavo Rodrigues
+489620 - Eraldo Gonçalves Junior
 -->
 <!DOCTYPE html>  
 
