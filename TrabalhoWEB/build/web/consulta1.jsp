@@ -23,7 +23,7 @@
     if (pagAtual != 1) {
         out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
     }
-    out.println("" + pagAtual + "");
+    out.println("<a  onclick=\"funcao('"+nome+"','"+pagAtual+"','"+numPaginas+"','ConsultaJogadores?nomeJogador=');\"> " + pagAtual + "</a>");
     if (pagAtual < numPaginas) {
         out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
     }
@@ -52,9 +52,9 @@
         if (pagAtual != 1) {
             out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
         }
-        out.println("<a  onclick=\"funcao('"+nome+"','"+pagAtual+"','"+numPaginas+"');\"> " + pagAtual + "</a>");
+        out.println("<a  onclick=\"funcao('"+nome+"','"+pagAtual+"','"+numPaginas+"','ConsultaJogadores?nomeJogador=');\"> " + pagAtual + "</a>");
         if (pagAtual < numPaginas) {
-            out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual + 1) + "');\">></a>");
+            out.println("<a onclick=\"OpenPage('ConsultaJogadores?nomeJogador=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
         }
 
         out.println("</p>");

@@ -23,7 +23,7 @@
 
         out.println("<a onclick=\"OpenPage('ConsultaEsporte?esporte=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
     }
-    out.println("" + pagAtual + "");
+    out.println("<a  onclick=\"funcao('"+nome+"','"+pagAtual+"','"+numPaginas+"','ConsultaEsporte?esporte=');\"> " + pagAtual + "</a>");
     if (pagAtual < numPaginas) {
         out.println("<a onclick=\"OpenPage('ConsultaEsporte?esporte=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
     }
@@ -48,7 +48,7 @@
         if (pagAtual != 1) {
             out.println("<a onclick=\"OpenPage('ConsultaEsporte?esporte=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
         }
-        out.println("" + pagAtual + "");
+        out.println("<a  onclick=\"funcao('"+nome+"','"+pagAtual+"','"+numPaginas+"','ConsultaEsporte?esporte=');\"> " + pagAtual + "</a>");
         if (pagAtual < numPaginas) {
             out.println("<a onclick=\"OpenPage('ConsultaEsporte?esporte=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
         }

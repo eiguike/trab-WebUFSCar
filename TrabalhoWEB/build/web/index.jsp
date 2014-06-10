@@ -246,11 +246,14 @@ que jogam por esse país e esporte
                     });
             }
             
-            function funcao(nome,pagatual,pagnumeros){
-                pagatual = prompt("Há num total de "+pagnumeros+" páginas, qual página pular? "+pagatual);
-                if(pagatual > pagnumeros)
+            function funcao(nome,pagatual,pagnumeros,pagina){
+                pagatual = prompt("Há num total de "+pagnumeros+" páginas, qual página pular?");
+                if(parseInt(pagatual) > parseInt(pagnumeros)){
                     return false;
-                OpenPage('ConsultaJogadores?nomeJogador=' + nome + '&pagina=' + pagatual);
+                }
+                OpenPage(pagina + nome + '&pagina=' + pagatual);
+                return true;                    
+
             }
 
 

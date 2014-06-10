@@ -23,7 +23,7 @@
 
         out.println("<a onclick=\"OpenPage('ConsultaTime?nomePais=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
     }
-    out.println("" + pagAtual + "");
+    out.println("<a  onclick=\"funcao('"+nome+"','"+pagAtual+"','"+numPaginas+"','ConsultaTime?nomePais=');\"> " + pagAtual + "</a>");
     if (pagAtual < numPaginas) {
         out.println("<a onclick=\"OpenPage('ConsultaTime?nomePais=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
     }
@@ -50,7 +50,7 @@
         if (pagAtual != 1) {
             out.println("<a onclick=\"OpenPage('ConsultaTime?nomePais=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
         }
-        out.println("" + pagAtual + "");
+        out.println("<a  onclick=\"funcao('"+nome+"','"+pagAtual+"','"+numPaginas+"','ConsultaTime?nomePais=');\"> " + pagAtual + "</a>");
         if (pagAtual < numPaginas) {
             out.println("<a onclick=\"OpenPage('ConsultaTime?nomePais=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
         }

@@ -25,7 +25,7 @@
     if (pagAtual != 1) {
         out.println("<a onclick=\"OpenPage('ConsultaPais?nomePais=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
     }
-    out.println("" + pagAtual + "");
+    out.println("<a  onclick=\"funcao('"+nome+"','"+pagAtual+"','"+numPaginas+"','ConsultaPais?nomePais=');\"> " + pagAtual + "</a>");
     if (pagAtual < numPaginas) {
         out.println("<a onclick=\"OpenPage('ConsultaPais?nomePais=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
     }
@@ -59,9 +59,9 @@
         if (pagAtual != 1) {
             out.println("<a onclick=\"OpenPage('ConsultaPais?nomePais=" + nome + "&pagina=" + (pagAtual - 1) + "');\"><< </a>");
         }
-        out.println("<a  onclick=\"funcao('"+nome+"','"+pagAtual+"','"+numPaginas+"');\"> " + pagAtual + "</a>");
+        out.println("<a  onclick=\"funcao('"+nome+"','"+pagAtual+"','"+numPaginas+"','ConsultaPais?nomePais=');\"> " + pagAtual + "</a>");
         if (pagAtual < numPaginas) {
-            out.println("<a onclick=\"OpenPage('ConsultaPais?nomePais=" + nome + "&pagina=" + (pagAtual + 1) + "');\">></a>");
+            out.println("<a onclick=\"OpenPage('ConsultaPais?nomePais=" + nome + "&pagina=" + (pagAtual + 1) + "');\"> >></a>");
         }
 
         out.println("</p>");
